@@ -247,16 +247,6 @@ resource "aws_cloudtrail" "global" {
     include_management_events = true
 
     data_resource {
-      type   = "AWS::S3::Object"
-      values = var.s3_object_level_logging_buckets
-    }
-  }
-
-  event_selector {
-    read_write_type           = "All"
-    include_management_events = true
-
-    data_resource {
       type   = "AWS::DynamoDB::Table"
       values = var.dynamodb_event_logging_tables
     }
